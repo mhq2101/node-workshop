@@ -35,7 +35,44 @@ module.exports = {
         process.stdout.write(str);
         process.stdout.write('\nprompt > ');
     }
-  }
+  },
+  cat: function(str) {
+    var fs = require('fs');
+    var temp = process.argv[1].split('/');
+    temp.pop();
+    temp = temp.join('/');
+    temp = temp.concat('/' + str);
+    fs.readFile(temp, (err, data) => {
+        if (err) throw err;
+        process.stdout.write(data);
+    });
+  },
+  head: function(str) {
+    var fs = require('fs');
+    var temp = process.argv[1].split('/');
+    temp.pop();
+    temp = temp.join('/');
+    temp = temp.concat('/' + str);
+    var write = '';
+    write = fs.readFileSync(temp, 'utf8');
+
+    write = write.split('\n');
+    write = write.slice(0,5).join('\n');
+    process.stdout.write(write);
+  },
+  tail: function(str) {
+    var fs = require('fs');
+    var temp = process.argv[1].split('/');
+    temp.pop();
+    temp = temp.join('/');
+    temp = temp.concat('/' + str);
+    var write = '';
+    write = fs.readFileSync(temp, 'utf8');
+
+    write = write.split('\n');
+    write = write.slice(-5).join('\n');
+    process.stdout.write(write);
+  } 
 }
 
 
