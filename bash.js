@@ -20,7 +20,6 @@ process.stdin.on('data', function (data) {
 //   }
 
 var commands = require('./commands');
-// var userCommand = 'pwd';
 commands[cmd]();
 
 });
