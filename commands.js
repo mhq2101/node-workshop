@@ -15,15 +15,14 @@ module.exports = {
   },
   ls: function() {
       var fs = require('fs');
-      var res = fs.readdirSync('.');
-      res = res.join(' ');
-      process.stdout.write(res);
-      process.stdout.write('\nprompt > ');
-    //   var temp = process.argv[1].split('/');
-    //   temp.pop();
-    // //   console.log(temp);
-    //   temp = temp.join('/');
-    // //   console.log(temp);
+    //   var res = fs.readdirSync('.');
+      fs.readdir('.', 'utf8', (err, files) => {
+          if (err) throw err;
+          process.stdout.write(files.join(' '));
+      });
+    //   res = res.join(' ');
+    //   process.stdout.write(res);
+    //   process.stdout.write('\nprompt > ');
       
   },
   echo: function(str) {
