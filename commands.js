@@ -18,12 +18,18 @@ module.exports = {
       var res = fs.readdirSync('.');
       res = res.join(' ');
       process.stdout.write(res);
+      process.stdout.write('\nprompt > ');
     //   var temp = process.argv[1].split('/');
     //   temp.pop();
     // //   console.log(temp);
     //   temp = temp.join('/');
     // //   console.log(temp);
       
+  },
+  echo: function(str) {
+    // var output = process.stdin.on() 
+    process.stdout.write(str);
+    process.stdout.write('\nprompt > ');
   }
 }
 

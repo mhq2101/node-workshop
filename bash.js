@@ -5,7 +5,11 @@ process.stdout.write('prompt > ');
 process.stdin.on('data', function (data) {
     var cmd = data.toString().trim(); // remove the newline
     var commands = require('./commands');
-    commands[cmd]();
+    var temp = cmd.split(' ');
+    cmd = temp[0];
+    temp.shift();
+    temp = temp.join(' ')
+    commands[cmd](temp);
 
 //   if (cmd === 'pwd') {
 //       process.stdout.write(process.argv[1]);
