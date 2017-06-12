@@ -27,12 +27,15 @@ module.exports = {
       
   },
   echo: function(str) {
-    // var output = process.stdin.on() 
-    process.stdout.write(str);
-    process.stdout.write('\nprompt > ');
+    if (str[0] === '$') {
+        str = str.slice(1);
+        process.stdout.write(process.env[str]);
+    }
+    else {
+        process.stdout.write(str);
+        process.stdout.write('\nprompt > ');
+    }
   }
 }
-
-
 
 
